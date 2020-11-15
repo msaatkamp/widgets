@@ -23,7 +23,8 @@ module.exports = {
         "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".js"] }],
         "import/prefer-default-export": "off",
         "skipBlankLines": 0,
-        "ignoreComments": 0
+        "ignoreComments": 0,
+        "react/prop-types": 0
     },
     "settings": {
         "react": {

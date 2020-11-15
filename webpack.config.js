@@ -55,8 +55,10 @@ module.exports = {
         maxAssetSize: 512000,
     },
     devServer: {
-        contentBase: './dist',
+        contentBase: './src',
+        publicPath: '/dist',
         inline: true,
         port: 3000,
-    },
+        hot: true
+    }
 };
