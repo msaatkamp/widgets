@@ -12,5 +12,6 @@ const Body = (props) => {
 export default Body
 
 const StyledBody = styled.div`
-    background-color: rgb(254, 254, 254)
+    background-color: #fcfcfc;
+    flex-grow: 1;
 `

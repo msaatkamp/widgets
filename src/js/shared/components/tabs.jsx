@@ -1,14 +1,17 @@
 import React from "react"
 import styled from "styled-components"
 
-const Tabs = ({active}) => {
+const Tabs = ({active, setActive, insights}) => {    
+	const reads = insights.filter(e => e.status === "read").length
+    const unreads = insights.filter(e => e.status === "unread").length
+
     return (
         <TabsWrapper>
-        <StyledTab active={active == 1}>
-            <span>All insights</span>
+        <StyledTab active={active == 1} onClick={() => setActive(1)}>
+            <span>All insights ({reads})</span>
         </StyledTab>
-        <StyledTab active={active == 2}>
-            <span>Unread insights</span>
+        <StyledTab active={active == 2} onClick={() => setActive(2)}>
+            <span>Unread insights  ({unreads})</span>
         </StyledTab>
     </TabsWrapper>
     )
@@ -25,9 +28,10 @@ const StyledTab = styled.div`
     height: 24px;
     margin-top: 4px;
 
-    span {
+    span {    
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
         display: flex;
-        font-family: 'Arial Black', sans-serif;
         text-transform: uppercase;
         font-size: 10px;
         justify-content: center;

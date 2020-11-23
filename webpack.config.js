@@ -14,12 +14,19 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /server/],
+                resolve: { extensions: [".js", ".jsx"] },
                 use: ["babel-loader", "eslint-loader"]
             },
             {
-                test: /\.(css|scss)$/,
-                use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+                test: /\.(css|scss|sass)$/,
+                use: ['style-loader', {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        esModule: false
+                    }},
+                'css-loader', "sass-loader"],
+                
             },
             {
                 test: /\.(png|jp(e*)g|svg)$/,

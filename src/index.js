@@ -1,6 +1,8 @@
 
 import React from "react"
 import ReactDOM from "react-dom"
-import Inbox from "./js/Inbox/Inbox.jsx"
+import App from "./App"
 
-ReactDOM.render(<Inbox />, document.getElementById("root"))
+import 'swiper/swiper.scss'
+
+ReactDOM.render(<App />, document.getElementById("root"))
