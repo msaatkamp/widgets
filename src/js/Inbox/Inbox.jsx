@@ -17,12 +17,17 @@ const Inbox = ({selectStory}) => {
     const [loading, setLoading] = useState(true)
 	
 	useEffect(() => {
-		fetch("http://localhost:5000/getInsights").then(res => {
-			if(res.status == 200) return res.json()
-		}).then((data) => {
-			setInsights(data)
-			setLoading(false)
-		})
+		try{
+			fetch("http://localhost:5000/getInsights").then(res => {
+				if(res.status == 200) return res.json()
+			}).then((data) => {
+				setInsights(data)
+				setLoading(false)
+			})
+		} catch (e) {
+			console.warn("Error runnning fetch")
+		}
+		
 	}, [])
 
 	if(loading) {
@@ -31,10 +36,10 @@ const Inbox = ({selectStory}) => {
 
 	return <Body>
 				<Tabs active={activeTab} setActive={setActiveTab} insights={insights} />
-				<StyledSwiper renderArrowNext={false} renderArrowPrev={false} swipeable={true} >
+				<StyledSwiper slidesPerView={1}>
 					{insights && insights.map(e => {
 						if(activeTab === 1 && e.status == "read" || activeTab === 2 && e.status == "unread") {
-							return <SwiperSlide key={e.insightId} spaceBetween={100} slidesPerView={1}>
+							return <SwiperSlide key={e.insightId}>
 								<StyledCard onClick={() => selectStory(e.insightId)}>
 									<div>		
 										<div>{e.status == "read" ? "• " : ""}{formatDate(e.date)}</div>

@@ -1,6 +1,6 @@
+const path = require('path');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 const output = {
@@ -10,6 +10,9 @@ const output = {
 module.exports = {
     entry: './src/index.js',
     output: output,
+    resolve: {
+        modules: [path.resolve(__dirname, 'src'), 'node_modules']
+    },
     module: {
         rules: [
             {
@@ -20,13 +23,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss|sass)$/,
-                use: ['style-loader', {
-                    loader: MiniCssExtractPlugin.loader,
-                    options: {
-                        esModule: false
-                    }},
-                'css-loader', "sass-loader"],
-                
+                use: ['style-loader', 'css-loader',  'sass-loader']
             },
             {
                 test: /\.(png|jp(e*)g|svg)$/,
@@ -47,9 +44,6 @@ module.exports = {
         }),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'defer',
-        }),
-        new MiniCssExtractPlugin({
-            filename: "style.[contenthash].css"
         })
     ],
     stats: {

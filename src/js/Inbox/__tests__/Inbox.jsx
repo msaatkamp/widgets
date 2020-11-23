@@ -1,9 +1,16 @@
+// import React from 'react';
+// import { render, screen } from '@testing-library/react';
+// import Inbox from '../Inbox';
 
-it("Should render a an Inbox message", () => {
-    // render(<Inbox />)
+//const then = () => jest.fn(() => {return Promise.resolve({json: () => Promise.resolve({data: []})})})
+// const fetchMock = jest.fn(() => 
+//     Promise.resolve({status: 400})
+// )
 
-    // const elementText = document.querySelector("h2").textContent
+// global.fetch = fetchMock
 
-    // expect(elementText).toBe("Inbox")
-    expect(1).toBe(1)
-})
+// it("Should render after Loading", () => {
+    
+//     //render(<Inbox selectStory={false}/>)
+//     expect(1).toBe(1)
+// })

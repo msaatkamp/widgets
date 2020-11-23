@@ -21,7 +21,7 @@ const App = () => {
                 </>}
             {storyId && 
                 <>
-                <Header background={"#FBFBFB"} font={"#9bb9f6"}> <StyledIcon icon={faArrowLeft} /> <span>Spending Analysis</span></Header>
+                <Header background={"#FBFBFB"} font={"#9bb9f6"}> <StyledIcon icon={faArrowLeft} onClick={() => setStoryId(undefined)} /> <span>Spending Analysis</span></Header>
                     <StoryWidget storyId={storyId}/>
                 </>
             }
